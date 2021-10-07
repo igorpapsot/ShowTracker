@@ -19,6 +19,8 @@ public class Show {
 
     protected boolean deleted;
 
+    protected int lastWatchedEp;
+
     public static ArrayList<Show> showList = new ArrayList<>();
 
 
@@ -32,15 +34,17 @@ public class Show {
         this.releaseYear = 0;
         this.totalSeasons = 0;
         this.deleted = false;
+        this.lastWatchedEp = 0;
     }
 
-    public Show(int id, String showName, int totalEpisodes, int releaseYear, int totalSeasons, boolean deleted){
+    public Show(int id, String showName, int totalEpisodes, int releaseYear, int totalSeasons, boolean deleted, int lastWatchedEp){
         this.id = id;
         this.showName = showName;
         this.totalEpisodes = totalEpisodes;
         this.releaseYear = releaseYear;
         this.totalSeasons = totalSeasons;
         this.deleted = deleted;
+        this.lastWatchedEp = lastWatchedEp;
     }
 
     static public void loadShows(){
@@ -67,7 +71,7 @@ public class Show {
         File file = new File(showsFile);
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
-            writer.write("\n" + show.getId() + "/" + show.getShowName() + "/" + show.getTotalEpisodes() + "/" + show.getTotalSeasons() + "/" + show.getReleaseYear() + "/" + show.isDeleted());
+            writer.write("\n" + show.getId() + "/" + show.getShowName() + "/" + show.getTotalEpisodes() + "/" + show.getTotalSeasons() + "/" + show.getReleaseYear() + "/" + show.isDeleted() + "/" + show.getLastWatchedEp());
             writer.close();
             showList.add(show);
         } catch (IOException e) {
@@ -91,10 +95,11 @@ public class Show {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
             for(Show show : showList){
                 if(show.getId() == id){
-                    builder.append(targetedShow.getId()).append("/").append(targetedShow.getShowName()).append("/").append(targetedShow.getTotalEpisodes()).append("/").append(targetedShow.getTotalSeasons()).append("/").append(targetedShow.getReleaseYear()).append(targetedShow.isDeleted()).append("\n");
+                    System.out.println("found");
+                    builder.append(targetedShow.getId()).append("/").append(targetedShow.getShowName()).append("/").append(targetedShow.getTotalEpisodes()).append("/").append(targetedShow.getTotalSeasons()).append("/").append(targetedShow.getReleaseYear()).append("/").append(targetedShow.isDeleted()).append("/").append(targetedShow.getLastWatchedEp()).append("\n");
                 }
                 else{
-                    builder.append(show.getId()).append("/").append(show.getShowName()).append("/").append(show.getTotalEpisodes()).append("/").append(show.getTotalSeasons()).append("/").append(show.getReleaseYear()).append("/").append(targetedShow.isDeleted()).append("\n");
+                    builder.append(show.getId()).append("/").append(show.getShowName()).append("/").append(show.getTotalEpisodes()).append("/").append(show.getTotalSeasons()).append("/").append(show.getReleaseYear()).append("/").append(show.isDeleted()).append("/").append(show.getLastWatchedEp()).append("\n");
                 }
             }
             writer.write(builder.toString());
@@ -115,7 +120,7 @@ public class Show {
                 if(show.getId() == id){
                     show.setDeleted(true);
                 }
-                builder.append(show.getId()).append("/").append(show.getShowName()).append("/").append(show.getTotalEpisodes()).append("/").append(show.getTotalSeasons()).append("/").append(show.getReleaseYear()).append("/").append(show.isDeleted()).append("\n");
+                builder.append(show.getId()).append("/").append(show.getShowName()).append("/").append(show.getTotalEpisodes()).append("/").append(show.getTotalSeasons()).append("/").append(show.getReleaseYear()).append("/").append(show.isDeleted()).append("/").append(show.getLastWatchedEp()).append("\n");
             }
             writer.write(builder.toString());
             writer.close();
@@ -134,6 +139,7 @@ public class Show {
         this.releaseYear = Integer.parseInt(split[4]);
         this.totalSeasons = Integer.parseInt(split[3]);
         this.deleted = Boolean.parseBoolean(split[5]);
+        this.lastWatchedEp = Integer.parseInt(split[6]);
 
     }
 
@@ -198,6 +204,14 @@ public class Show {
         Show.showList = showList;
     }
 
+    public int getLastWatchedEp() {
+        return lastWatchedEp;
+    }
+
+    public void setLastWatchedEp(int lastWatchedEp) {
+        this.lastWatchedEp = lastWatchedEp;
+    }
+
     @Override
     public String toString() {
         return "Show{" +
@@ -206,6 +220,8 @@ public class Show {
                 ", totalEpisodes=" + totalEpisodes +
                 ", totalSeasons=" + totalSeasons +
                 ", releaseYear=" + releaseYear +
+                ", deleted=" + deleted +
+                ", lastWatchedEp=" + lastWatchedEp +
                 '}';
     }
 }

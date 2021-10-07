@@ -95,12 +95,10 @@ public class Show {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
             for(Show show : showList){
                 if(show.getId() == id){
-                    System.out.println("found");
-                    builder.append(targetedShow.getId()).append("/").append(targetedShow.getShowName()).append("/").append(targetedShow.getTotalEpisodes()).append("/").append(targetedShow.getTotalSeasons()).append("/").append(targetedShow.getReleaseYear()).append("/").append(targetedShow.isDeleted()).append("/").append(targetedShow.getLastWatchedEp()).append("\n");
+                    update(targetedShow, show);
+                    //builder.append(targetedShow.getId()).append("/").append(targetedShow.getShowName()).append("/").append(targetedShow.getTotalEpisodes()).append("/").append(targetedShow.getTotalSeasons()).append("/").append(targetedShow.getReleaseYear()).append("/").append(targetedShow.isDeleted()).append("/").append(targetedShow.getLastWatchedEp()).append("\n");
                 }
-                else{
-                    builder.append(show.getId()).append("/").append(show.getShowName()).append("/").append(show.getTotalEpisodes()).append("/").append(show.getTotalSeasons()).append("/").append(show.getReleaseYear()).append("/").append(show.isDeleted()).append("/").append(show.getLastWatchedEp()).append("\n");
-                }
+                builder.append(show.getId()).append("/").append(show.getShowName()).append("/").append(show.getTotalEpisodes()).append("/").append(show.getTotalSeasons()).append("/").append(show.getReleaseYear()).append("/").append(show.isDeleted()).append("/").append(show.getLastWatchedEp()).append("\n");
             }
             writer.write(builder.toString());
             writer.close();
@@ -108,6 +106,17 @@ public class Show {
             e.printStackTrace();
         }
 
+    }
+
+    private static void update(Show targetedShow, Show show) {
+        System.out.println("found");
+        show.setDeleted(targetedShow.getDeleted());
+        show.setShowName(targetedShow.getShowName());
+        show.setLastWatchedEp(targetedShow.getLastWatchedEp());
+        show.setReleaseYear(targetedShow.getReleaseYear());
+        show.setId(targetedShow.getId());
+        show.setTotalEpisodes(targetedShow.getTotalEpisodes());
+        show.setTotalSeasons(targetedShow.getTotalSeasons());
     }
 
     public static void deleteShow(int id){
@@ -141,6 +150,10 @@ public class Show {
         this.deleted = Boolean.parseBoolean(split[5]);
         this.lastWatchedEp = Integer.parseInt(split[6]);
 
+    }
+
+    public boolean getDeleted(){
+        return deleted;
     }
 
     public String isDeleted() {

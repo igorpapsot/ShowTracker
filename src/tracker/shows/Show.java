@@ -140,6 +140,16 @@ public class Show {
 
     }
 
+    public static int getNextId(){
+        int id = 1;
+        for(Show show : showList){
+            if(show.getId() > id){
+                id = show.getId();
+            }
+        }
+        return id + 1;
+    }
+
     private void valueAssignment(String[] split){
 
         this.id = Integer.parseInt(split[0]);

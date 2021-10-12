@@ -80,11 +80,11 @@ public class Show {
     }
 
     public static void readShows(){
-        System.out.println("////Reading////");
+        //System.out.println("////Reading////");
         for(Show show: showList){
             System.out.println(show);
         }
-        System.out.println("////Reading finished////");
+        //System.out.println("////Reading finished////");
     }
 
     public static void updateShow(int id, Show targetedShow){
@@ -227,14 +227,11 @@ public class Show {
 
     @Override
     public String toString() {
-        return "Show{" +
-                "id=" + id +
+        return "id=" + id +
                 ", showName='" + showName + '\'' +
                 ", totalEpisodes=" + totalEpisodes +
                 ", totalSeasons=" + totalSeasons +
                 ", releaseYear=" + releaseYear +
-                ", deleted=" + deleted +
-                ", lastWatchedEp=" + lastWatchedEp +
-                '}';
+                ", lastWatchedEp=" + lastWatchedEp;
     }
 }

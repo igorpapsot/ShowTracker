@@ -2,27 +2,61 @@ package tracker.main;
 
 import tracker.shows.Show;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args){
         Show.loadShows();
-        Show.readShows();
-        Show newShow = new Show(4, "Najnoviji", 100, 2017 ,20, false, 67);
 
-        System.out.println("adding show");
-        Show.addShow(newShow);
+        System.out.println("Shows: ");
         Show.readShows();
-        System.out.println("show added\n");
+        System.out.println();
 
-        System.out.println("updating show");
-        Show.updateShow(3,newShow);
-        Show.readShows();
-        System.out.println("show updated\n");
+        printMenuOtpions();
+        menuOptionScanner();
+    }
 
-        System.out.println("deleting show");
-        Show.deleteShow(2);
-        Show.readShows();
-        System.out.println("show deleted\n");
+    private static void printMenuOtpions() {
+        System.out.println("1 - Add show ");
+        System.out.println("2 - Update show");
+        System.out.println("3 - Delete show");
+        System.out.println("4 - Exit\n");
+    }
 
+    private static void menuOptionScanner() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Input your choice: ");
+        int option = sc.nextInt();
+
+        switch (option) {
+            case 1:
+                System.out.println(option);
+                break;
+            case 2:
+                System.out.println(option);
+                break;
+            case 3:
+                System.out.println(option);
+                break;
+            case 4:
+                System.out.println("Exiting...");
+                System.exit(0);
+                break;
+        }
+    }
+
+    private static void showAdder(){
 
     }
+
+    private static void showDeleter(){
+
+    }
+
+    private static void show(){
+
+    }
+
+
+
 }

@@ -61,9 +61,8 @@ public class Main {
                 System.exit(0);
                 break;
         }
-        sc.close();
-    }
 
+    }
 
     private static void showAdder(){
         Scanner sc = new Scanner(System.in);
@@ -94,7 +93,11 @@ public class Main {
     }
 
     private static void showDeleter(){
-
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter show id of targeted show: ");
+        int choice = sc.nextInt();
+        Show.deleteShow(choice);
+        System.out.println("Show " + choice + " deleted\n");
     }
 
     private static void showUpdater(){

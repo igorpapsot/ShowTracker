@@ -80,11 +80,10 @@ public class Show {
     }
 
     public static void readShows(){
-        //System.out.println("////Reading////");
         for(Show show: showList){
             System.out.println(show);
         }
-        //System.out.println("////Reading finished////");
+        System.out.println();
     }
 
     public static void updateShow(int id, Show targetedShow){
@@ -96,7 +95,6 @@ public class Show {
             for(Show show : showList){
                 if(show.getId() == id){
                     update(targetedShow, show);
-                    //builder.append(targetedShow.getId()).append("/").append(targetedShow.getShowName()).append("/").append(targetedShow.getTotalEpisodes()).append("/").append(targetedShow.getTotalSeasons()).append("/").append(targetedShow.getReleaseYear()).append("/").append(targetedShow.isDeleted()).append("/").append(targetedShow.getLastWatchedEp()).append("\n");
                 }
                 builder.append(show.getId()).append("/").append(show.getShowName()).append("/").append(show.getTotalEpisodes()).append("/").append(show.getTotalSeasons()).append("/").append(show.getReleaseYear()).append("/").append(show.isDeleted()).append("/").append(show.getLastWatchedEp()).append("\n");
             }
@@ -107,6 +105,7 @@ public class Show {
         }
 
     }
+
 
     private static void update(Show targetedShow, Show show) {
         System.out.println("found");

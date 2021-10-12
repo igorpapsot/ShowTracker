@@ -101,6 +101,35 @@ public class Main {
     }
 
     private static void showUpdater(){
+        Scanner sc = new Scanner(System.in);
+        Show show = new Show();
+
+        System.out.println("Enter id: ");
+        String id = sc.nextLine();
+        show.setId(Integer.parseInt(id));
+
+        System.out.println("Enter show name: ");
+        String name = sc.nextLine();
+        show.setShowName(name);
+
+        System.out.println("Enter number of episodes: ");
+        String allEps = sc.nextLine();
+        show.setTotalEpisodes(Integer.parseInt(allEps));
+
+        System.out.println("Enter number of seasons: ");
+        String seasons = sc.nextLine();
+        show.setTotalSeasons(Integer.parseInt(seasons));
+
+        System.out.println("Enter release year: ");
+        String year = sc.nextLine();
+        show.setReleaseYear(Integer.parseInt(year));
+
+        System.out.println("Enter current episode: ");
+        String ep = sc.nextLine();
+        show.setLastWatchedEp(Integer.parseInt(ep));
+
+        show.setDeleted(false);
+        Show.updateShow(Integer.parseInt(id),show);
 
     }
 

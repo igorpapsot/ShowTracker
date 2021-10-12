@@ -96,7 +96,7 @@ public class Show {
                 if(show.getId() == id){
                     update(targetedShow, show);
                 }
-                builder.append(show.getId()).append("/").append(show.getShowName()).append("/").append(show.getTotalEpisodes()).append("/").append(show.getTotalSeasons()).append("/").append(show.getReleaseYear()).append("/").append(show.isDeleted()).append("/").append(show.getLastWatchedEp());
+                builder.append(show.getId()).append("/").append(show.getShowName()).append("/").append(show.getTotalEpisodes()).append("/").append(show.getTotalSeasons()).append("/").append(show.getReleaseYear()).append("/").append(show.isDeleted()).append("/").append(show.getLastWatchedEp()).append("\n");
             }
             writer.write(builder.toString());
             writer.close();

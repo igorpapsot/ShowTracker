@@ -96,7 +96,7 @@ public class Show {
                 if(show.getId() == id){
                     update(targetedShow, show);
                 }
-                builder.append(show.getId()).append("/").append(show.getShowName()).append("/").append(show.getTotalEpisodes()).append("/").append(show.getTotalSeasons()).append("/").append(show.getReleaseYear()).append("/").append(show.isDeleted()).append("/").append(show.getLastWatchedEp()).append("\n");
+                builder.append(show.getId()).append("/").append(show.getShowName()).append("/").append(show.getTotalEpisodes()).append("/").append(show.getTotalSeasons()).append("/").append(show.getReleaseYear()).append("/").append(show.isDeleted()).append("/").append(show.getLastWatchedEp());
             }
             writer.write(builder.toString());
             writer.close();
@@ -106,6 +106,24 @@ public class Show {
 
     }
 
+    public static void updateCurrentEp(int id, int currentEp){
+        File file = new File(showsFile);
+        StringBuilder builder = new StringBuilder();
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            for(Show show : showList){
+                if(show.getId() == id){
+                    show.setLastWatchedEp(currentEp);
+                }
+                builder.append(show.getId()).append("/").append(show.getShowName()).append("/").append(show.getTotalEpisodes()).append("/").append(show.getTotalSeasons()).append("/").append(show.getReleaseYear()).append("/").append(show.isDeleted()).append("/").append(show.getLastWatchedEp()).append("\n");
+            }
+            writer.write(builder.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     private static void update(Show targetedShow, Show show) {
         System.out.println("found");

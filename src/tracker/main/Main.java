@@ -105,7 +105,13 @@ public class Main {
     }
 
     private static  void episodeUpdater(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter id: ");
+        int id = sc.nextInt();
 
+        System.out.println("Enter current episode: ");
+        int ep = sc.nextInt();
+        Show.updateCurrentEp(id,ep);
     }
 
 
